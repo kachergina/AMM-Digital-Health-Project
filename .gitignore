@@ -1,0 +1,15 @@
+*.tmp
+_*.txt
+._*
+
+# macOS
+.DS_Store
+Icon?
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Office temp files
+~$*

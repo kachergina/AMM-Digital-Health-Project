@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Автоматизированный медицинский модуль (AMM) — безопасный шлюз для экстренной помощи пациентам из групп социального риска.">
+  <title>AMM — Автоматизированный медицинский модуль</title>
+  <link rel="icon" href="../assets/images/favicon-32x32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="../assets/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span class="logo-text">
+          <span class="logo-title">Автоматизированный медицинский модуль</span>
+          <span class="logo-tagline">Исследовательский проект</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Главная</a>
+        <a href="about.html">О проекте</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch ru-unlocked">
+          <a href="#" data-lang="en">EN</a>
+          <a href="#" data-lang="fr">FR</a>
+          <a href="#" data-lang="ru" class="lang-hidden">RU</a>
+        </div>
+        <a href="#" class="btn btn-primary btn-spec" data-spec-download>
+          <span class="long-label">Полная спецификация</span><span class="short-label">Spec</span>
+        </a>
+        <a href="http://127.0.0.1:5001/" data-simulator class="btn btn-primary btn-sim" target="_blank" rel="noopener noreferrer">
+          <span class="sim-long">Запустить симулятор</span><span class="sim-short">Симулятор</span>
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Меню">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Концепция медицинских инноваций</span>
+          <h1>Безопасный приём для тех, кому помощь нужнее всего</h1>
+          <p class="hero-lead">
+            AMM — изолированный модуль под контролем врача у входа в больницу. Быстрая оценка, санитарная обработка и стабилизация пациентов из социально уязвимых групп: бездомных, пациентов в состоянии опьянения, людей без документов и людей с нарушенной гигиеной.
+          </p>
+          <div class="hero-actions">
+            <a href="about.html" class="btn btn-primary">Изучить концепцию</a>
+            <a href="#kak-rabotaet" class="btn btn-secondary">Как это работает</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="../assets/images/exterior.jpg" alt="Внешний вид автоматизированного медицинского модуля">
+          <div class="hero-badge">
+            <strong>15–20 сек</strong>
+            Первичная бесконтактная оценка
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-header center">
+          <h2>Зачем это нужно</h2>
+          <p>Десятки тысяч бездомных в России обращаются за помощью из-за травм, обморожений, отравлений и нелеченных хронических заболеваний — но больницам не хватает инфраструктуры для безопасного приёма. Три барьера накладываются одновременно:</p>
+        </div>
+        <div class="barrier-grid">
+          <article class="barrier-card">
+            <h3>Эпидемиологический</h3>
+            <p>Туберкулёз, гепатит, ВИЧ, кожные и паразитарные заболевания создают риск для иммунокомпрометированных пациентов в общих палатах.</p>
+          </article>
+          <article class="barrier-card">
+            <h3>Поведенческий</h3>
+            <p>Агрессия при опьянении подвергает медперсонал — часто незащищённый — риску травм и выгорания.</p>
+          </article>
+          <article class="barrier-card">
+            <h3>Социально-гигиенический</h3>
+            <p>Нет документов, нет истории болезни, сильное загрязнение мешает осмотру и постановке катетера.</p>
+          </article>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <strong>3</strong>
+            <span>Барьера: эпидемиологический, поведенческий, гигиенический</span>
+          </div>
+          <div class="stat-card">
+            <strong>5–7</strong>
+            <span>Минут до первого решения врача</span>
+          </div>
+          <div class="stat-card">
+            <strong>24/7</strong>
+            <span>Стандартизированный приём круглосуточно</span>
+          </div>
+          <div class="stat-card">
+            <strong>100%</strong>
+            <span>Решения принимает только врач</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>На базе проверенных технологий</h2>
+          <p>AMM не изобретает новую науку — он объединяет манипуляторы в стиле da Vinci, больничные сервисные роботы, УФ-дезинфекцию, умную диагностику и робототехнику ухода в единый шлюз приёма.</p>
+        </div>
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-icon">&#9881;</div>
+            <h3>Робот-манипулятор</h3>
+            <p>Управляемая врачом «рука» — медицинский «швейцарский нож» для катетера, забора крови, дезинфекции и контактных процедур.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#9673;</div>
+            <h3>Бесконтактный сканер</h3>
+            <p>Термография, 3D-карта тела и акустические датчики классифицируют состояние пациента за 15–20 секунд.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#10010;</div>
+            <h3>Lab-on-a-chip</h3>
+            <p>Экспресс-анализ крови за минуты вместо часа — результаты сразу на пульт врача.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#9733;</div>
+            <h3>УФ-стерилизация</h3>
+            <p>Проверенная после COVID технология: полная дезинфекция модуля между пациентами за ~15 минут.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#9829;</div>
+            <h3>Умная кровать-платформа</h3>
+            <p>Позиционирование по мотивам ROBEAR — автоматические перевороты, профилактика пролежней, оптимальные углы для процедур.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#9998;</div>
+            <h3>Пульт управления врача</h3>
+            <p>Защищённая удалённая комната: видео с нескольких ракурсов, панель показателей, голосовые и сенсорные команды.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="kak-rabotaet">
+      <div class="container">
+        <div class="section-header">
+          <h2>Алгоритм работы модуля</h2>
+          <p>От приёма бригадой скорой до перевода в стационар — каждый шаг по протоколу и с одобрения врача.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Приём и изоляция</h3>
+              <p>Пациент в герметичном модуле. Внешняя дверь блокируется. AMM переходит в автономный режим под дистанционным контролем.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Бесконтактная оценка</h3>
+              <p>Сканер собирает показатели, термоданные и 3D-карту травм. Классификация: сознательный, без сознания, агрессивный.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Контактное обследование</h3>
+              <p>Робот ставит катетер, забирает кровь, запускает физраствор, надевает пульсоксиметр и манжету.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Решение врача</h3>
+              <p>Полная панель: 3D-модель, термоскан, анализы. Врач общается по аудио и подтверждает каждое действие.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div>
+              <h3>Стабилизация</h3>
+              <p>Лечение по назначению врача: глюкоза при гипогликемии, мягкая фиксация при необходимости, роботизированный душ и сушка тёплым воздухом для санитарной обработки.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">6</div>
+            <div>
+              <h3>Перевод и стерилизация</h3>
+              <p>Пациент выходит через герметичный коридор. Модуль блокируется, дезинфицируется антисептиком и УФ. Готов к следующему приёму ~15 минут.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header center">
+          <h2>Внутри модуля</h2>
+          <p>Архитектура, интерфейс и компоненты — для безопасности, стерильности и достоинства пациента.</p>
+        </div>
+        <div class="gallery">
+          <figure class="gallery-item">
+            <img src="../assets/images/interior.jpg" alt="Схема внутреннего устройства модуля">
+            <figcaption class="gallery-caption">Интерьер: роборука, LiDAR, UV-C, lab-on-a-chip, шлюз</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="../assets/images/interface.jpg" alt="Пульт управления врача с показателями пациента">
+            <figcaption class="gallery-caption">Пульт: показатели, снимки, оценка риска ИИ, чат команды</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="../assets/images/exterior.jpg" alt="Внешний вид и чертежи модуля">
+            <figcaption class="gallery-caption">Экстерьер: модуль у входа в больницу</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header center">
+          <h2>Исследовательская гипотеза</h2>
+          <p>AMM под контролем врача как изолированные шлюзы приёма должны измеримо улучшить безопасность, скорость и пропускную способность.</p>
+        </div>
+        <div class="hypothesis-list">
+          <div class="hypothesis-item"><strong>Быстрее оценка</strong> — показатели и базовые данные за меньшее время, чем при стандартном приёме</div>
+          <div class="hypothesis-item"><strong>Безопаснее персонал</strong> — меньше травм от агрессивных или заражённых пациентов</div>
+          <div class="hypothesis-item"><strong>Ниже риск инфекций</strong> — изоляция плюс стандартизированные протоколы дезинфекции</div>
+          <div class="hypothesis-item"><strong>Выше пропускная способность</strong> — перераспределение процедур, меньше времени персонала на сложного пациента</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="delta-banner">
+          <div>
+            <h2>Протокол «Дельта»</h2>
+            <p>Для неконтактных и агрессивных пациентов — гуманная деэскалация с минимумом физического контакта персонала с пациентом при полном контроле врача.</p>
+            <a href="about.html#delta" class="btn btn-primary">Полный протокол</a>
+          </div>
+          <div class="delta-stages">
+            <div class="delta-stage"><strong>1.</strong> Вербальное вмешательство — спокойная речь врача через динамики</div>
+            <div class="delta-stage"><strong>2.</strong> Мягкая фиксация — мягкие подушки без боли</div>
+            <div class="delta-stage"><strong>3.</strong> Ингаляционная седация — контролируемый газ, мониторинг SpO2</div>
+            <div class="delta-stage"><strong>4.</strong> Возврат к стандартному протоколу — безопасный катетер и анализы</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Врач всегда принимает решения</h2>
+        <p>AMM — инструмент, а не замена. Каждая процедура требует явного одобрения врача.</p>
+        <a href="about.html" class="btn btn-primary">Полный проект (3 главы)</a>
+      </div>
+    </section>
+    <section class="simulator-cta">
+      <div class="container">
+        <span class="eyebrow">Интерактивная демо</span>
+        <h2>Запустить симулятор АММ</h2>
+        <p>Посмотрите работу системы мониторинга в реальном времени: наблюдайте смоделированные показатели, автоматическое обнаружение и конвейер данных. Все данные смоделированы — это не медицинское устройство.</p>
+        <a href="http://127.0.0.1:5001/" data-simulator class="btn btn-primary btn-sim" target="_blank" rel="noopener noreferrer">Запустить симулятор</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <img src="../assets/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span>Автоматизированный медицинский модуль</span>
+      </div>
+      <div class="footer-meta">
+        <strong>Кочергина Вера Николаевна</strong> — Индивидуальный проект, 10 Б, Москва 2026
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

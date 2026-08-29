@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Full documentation of the Automated Medical Module concept — architecture, protocol Delta, deployment models.">
+  <title>About — AMM</title>
+  <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span class="logo-text">
+          <span class="logo-title">Automated Medical Module</span>
+          <span class="logo-tagline">Research concept</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">
+          <a href="#" data-lang="en">EN</a>
+          <a href="#" data-lang="fr">FR</a>
+          <a href="#" data-lang="ru" class="lang-hidden">RU</a>
+        </div>
+        <a href="#" class="btn btn-primary btn-spec" data-spec-download>
+          <span class="long-label">Full specification</span><span class="short-label">Spec</span>
+        </a>
+        <a href="http://127.0.0.1:5001/" data-simulator class="btn btn-primary btn-sim" target="_blank" rel="noopener noreferrer">
+          <span class="sim-long">Launch Simulator</span><span class="sim-short">Simulator</span>
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>About the project</h1>
+        <p>Research project by Vera Kochergina, <a href="https://www.lfmoscou.com/" target="_blank" rel="noopener">Lycée Français de Moscou</a> (2026). Development of the concept of an Automated Medical Module (AMM) for emergency care of patients from socially vulnerable groups.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="content-block">
+          <span class="chapter-tag">Introduction</span>
+          <h2>Relevance and objectives</h2>
+          <p>Healthcare systems daily face people pushed to society's margins: homeless individuals, patients with severe alcohol or drug intoxication, those without ID documents, and people lacking basic hygiene. Admission creates infection risks for other patients, aggression toward staff, and diagnostic delays due to missing medical records and advanced untreated illness.</p>
+          <p>Modern hospitals often lack infrastructure to safely isolate such patients, assess them quickly, and perform sanitary treatment. The AMM concept proposes an isolated gateway for initial assessment, sanitary care, and basic stabilization — always under a doctor's supervision.</p>
+          <h3>Research focus</h3>
+          <ul>
+            <li><strong>Object:</strong> emergency medical care for socially vulnerable patients at hospital admission</li>
+            <li><strong>Subject:</strong> organizational and technological concept of a safe isolated module</li>
+            <li><strong>Goal:</strong> reduce risks and accelerate initial care while preserving the doctor's leading role</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <span class="chapter-tag">Chapter 1</span>
+          <h2>Theoretical background and problem analysis</h2>
+          <h3>1.1 Barriers and risks</h3>
+          <p>Charitable data suggest tens of thousands of homeless people in Russia — only the visible part of the problem. Main reasons for seeking care: injuries, frostbite, poisoning, and worsening chronic diseases left untreated for years.</p>
+          <div class="barrier-grid">
+            <article class="barrier-card">
+              <h3>Epidemiological barrier</h3>
+              <p>Street patients may carry tuberculosis, hepatitis, HIV, skin and parasitic diseases. Placing them in shared wards with immunocompromised postoperative patients creates nosocomial infection risk. Doctors face a dilemma: help one patient without endangering others.</p>
+            </article>
+            <article class="barrier-card">
+              <h3>Behavioral barrier</h3>
+              <p>Intoxication often brings uncontrolled aggression. Attacks on doctors and nurses are regularly reported. Staff — especially women — are often physically unprotected, leading to burnout and fear.</p>
+            </article>
+            <article class="barrier-card">
+              <h3>Social-hygienic barrier</h3>
+              <p>No ID means identity cannot be established quickly. Severe skin and clothing contamination blocks examination, injections, and IV catheter placement.</p>
+            </article>
+          </div>
+          <p>Outreach teams (e.g. the Night Bus project in Saint Petersburg) provide vital pre-hospital care, but safe and efficient hospital admission remains unresolved.</p>
+
+          <h3>1.2 Existing medical automation</h3>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>da Vinci surgical system</h3>
+              <p>Surgeon-controlled robotic instrument with exceptional precision, tremor elimination, and minimally invasive access — proof that manipulators can perform delicate medical procedures.</p>
+            </article>
+            <article class="card">
+              <h3>Hospital service robots</h3>
+              <p>Automated carts at institutions like Moscow's Sklifosovsky Institute transport samples, medications, and linen — freeing nurses for patient care.</p>
+            </article>
+            <article class="card">
+              <h3>UV disinfection robots</h3>
+              <p>Post-COVID widespread use: after staff leave, robots eliminate surface pathogens in minutes — sterility beyond manual cleaning.</p>
+            </article>
+          </div>
+
+          <h3>1.3 Diagnostics and caregiving concepts</h3>
+          <p><strong>Smart pills</strong> — ingestible capsules with miniature cameras capture thousands of intestinal images, transmitting data without invasive endoscopy. <strong>ROBEAR</strong> (Japan) — a caregiving robot that gently lifts bedridden patients into wheelchairs, reducing nurses' physical strain.</p>
+          <p><strong>Chapter 1 conclusion:</strong> the realistic path is not inventing new technology but integrating proven solutions — robotic manipulators, service robots, UV disinfection, rapid diagnostics — into a safe admission model.</p>
+        </div>
+
+        <div class="content-block">
+          <span class="chapter-tag">Chapter 2</span>
+          <h2>AMM concept and architecture</h2>
+          <div class="two-col">
+            <div>
+              <h3>2.1 Purpose: a "clean room" at the entrance</h3>
+              <p>AMM is a high-tech gateway between the hazardous outside world and the sterile hospital interior. Container-scale unit next to the emergency department, connected by a sealed corridor. Impact-resistant walls, easy to disinfect, with nothing removable or breakable inside.</p>
+              <p>Center: multifunctional medical bed-platform. On ceiling rails: a universal robotic manipulator and a diagnostic scanner (cameras, thermal imaging, non-contact sensors). Floor drainage enables automatic cleaning.</p>
+              <h3>2.2 Technology justification</h3>
+              <ul>
+                <li><strong>Manipulator</strong> — inspired by da Vinci, but versatile: catheter, disinfection, blood draw via interchangeable attachments</li>
+                <li><strong>Bed-platform</strong> — inspired by ROBEAR: automatic positioning, turning, pressure ulcer prevention</li>
+                <li><strong>Sterilization</strong> — mobile UV robot technology integrated for full cycle between patients</li>
+              </ul>
+            </div>
+            <img class="content-image" src="assets/images/interior.jpg" alt="AMM interior architecture diagram">
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>2.3 Operating algorithm (6 steps)</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h3>Admission and isolation</h3>
+                <p>Ambulance team authenticates with electronic card. Patient transferred to bed-platform. External door closes airtight and locks. AMM enters autonomous mode.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h3>Non-contact assessment (15–20 sec)</h3>
+                <p>Thermal camera, 3D body model (fractures, injuries), acoustic breathing and speech analysis. Classification: cooperative, unconscious, or aggressive — triggers Protocol Delta if needed.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h3>Contact examination</h3>
+                <p>Robotic arm disinfects skin, finds vein via infrared, inserts IV, draws blood for lab-on-a-chip, starts saline, attaches pulse oximeter and BP cuff.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <h3>Doctor's decision (5–7 min)</h3>
+                <p>Control station receives 3D model, thermal scan, vitals, and blood results. Doctor communicates via audio and decides next steps.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div>
+                <h3>Stabilization and procedures</h3>
+                <p>All actions require doctor confirmation — e.g. glucose for hypoglycemia, soft restraints if aggression returns, robotic shower and warm-air drying for sanitary treatment.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">6</div>
+              <div>
+                <h3>Transfer and sterilization</h3>
+                <p>Sealed corridor opens. After patient leaves, both doors lock. Antiseptic spray + high-intensity UV. Ready for next patient in ~15 minutes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block" id="delta">
+          <h3>2.3.1 Protocol Delta — aggressive patients</h3>
+          <p>Activated on verbal/physical aggression or psychomotor agitation without response to instructions. Goal: safe, humane preparation for diagnosis.</p>
+          <h3>Stage 1 — Verbal intervention</h3>
+          <p>Doctor via speakers: <em>"Hello. You are in a medical unit. We are here to help you. Please remain calm and lie still."</em> System waits 1–2 minutes.</p>
+          <h3>Stage 2 — Mechanical restraint</h3>
+          <p>Padded cushions rise from bed sides — limit movement without pain or circulation impairment. Purpose: prevent dangerous movements, not inflict pain.</p>
+          <h3>Stage 3 — Inhalation sedation</h3>
+          <p>Controlled sevoflurane or equivalent with elevated oxygen. Patient falls asleep naturally. Continuous SpO2 and breathing monitoring. Doctor can abort anytime.</p>
+          <h3>Stage 4 — Return to standard protocol</h3>
+          <p>Robotic arm performs IV, blood draw, and procedures under full supervision.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2.4 Key components</h3>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Robotic manipulator</h3>
+              <p>Flexible, precise, interchangeable tools: gripper, catheter needle, disinfecting swab.</p>
+            </article>
+            <article class="card">
+              <h3>Diagnostic scanner</h3>
+              <p>Thermal imaging and volumetric scanning — fractures, bleeding, abnormalities.</p>
+            </article>
+            <article class="card">
+              <h3>Rapid laboratory</h3>
+              <p>Compact blood analyzer — minutes instead of an hour in a conventional lab.</p>
+            </article>
+            <article class="card">
+              <h3>System "brain"</h3>
+              <p>High-performance computer aggregating all sensor data, presenting clear dashboards, executing doctor commands.</p>
+            </article>
+            <article class="card">
+              <h3>Control station</h3>
+              <p>Doctor works from a secure room: multi-angle video, vitals with auto-highlighted anomalies, voice and touchscreen commands.</p>
+            </article>
+            <article class="card">
+              <h3>Safety infrastructure</h3>
+              <p>LiDAR, HEPA ventilation, UV-C lamps, double-door airlock, floor drainage, remote physician display.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <span class="chapter-tag">Chapter 3</span>
+          <h2>Implementation in healthcare</h2>
+          <h3>3.1 Deployment models</h3>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>External extension</h3>
+              <p>Prefab unit on foundation next to ER with sealed corridor.</p>
+              <p class="card-note pros"><strong>Pros:</strong> rapid deployment (weeks), no major reconstruction, cost-effective.</p>
+              <p class="card-note cons"><strong>Cons:</strong> requires hospital grounds space, may affect appearance.</p>
+            </article>
+            <article class="card">
+              <h3>Built-in integration</h3>
+              <p>Multiple AMMs in new hospital or full ER reconstruction.</p>
+              <p class="card-note pros"><strong>Pros:</strong> perfect logistics, aesthetic integration.</p>
+              <p class="card-note cons"><strong>Cons:</strong> high cost, long timeline, new buildings only.</p>
+            </article>
+            <article class="card">
+              <h3>Mobile AMM</h3>
+              <p>Module on truck chassis for disasters, mass casualties, remote areas.</p>
+              <p class="card-note pros"><strong>Pros:</strong> high flexibility and mobility.</p>
+              <p class="card-note cons"><strong>Cons:</strong> full autonomy required, higher operating costs.</p>
+            </article>
+          </div>
+
+          <h3>3.2 Economic and social impact</h3>
+          <p><strong>Direct benefits:</strong> lower nosocomial infection treatment costs; reduced workload for nurses, support staff, and security. <strong>Indirect benefits:</strong> less professional burnout; higher emergency department throughput. <strong>Social impact:</strong> guaranteed dignified care for people often excluded from the healthcare system.</p>
+
+          <h3>3.3 New professional roles</h3>
+          <ul>
+            <li><strong>AMM doctor-operator</strong> — emergency or ICU specialist trained on the module interface</li>
+            <li><strong>AMM maintenance engineer</strong> — servicing, calibration, repair of modules and sterilization systems</li>
+          </ul>
+
+          <h3>3.4 Ethics and legal aspects</h3>
+          <p>Emergency care without prior consent when life is at immediate risk. Responsibility always with the doctor — the robot is a tool. Reduced direct contact increases chances of rapid, safe, dignified care.</p>
+
+          <h3>3.5 Limitations, risks, and mitigation</h3>
+          <p>AMM does not replace CT/MRI/ultrasound, final diagnosis, or full-scale resuscitation when standard emergency protocols apply.</p>
+          <p><strong>Key risks:</strong> sensor or manipulator failure; incomplete data without doctor supervision; disinfection cycle failure; patient self-harm or equipment damage; legal/regulatory gaps.</p>
+          <p><strong>Mitigation:</strong> mandatory doctor supervision and full documentation; safe-failure modes (manual override, staff summon, disable hazardous functions); regular maintenance and sterilization verification; comprehensive training and authorization system.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Hypothesis</h2>
+          <div class="hypothesis-list">
+            <div class="hypothesis-item"><strong>1.</strong> Faster initial assessment (vitals and primary data) vs. standard admission</div>
+            <div class="hypothesis-item"><strong>2.</strong> Fewer injuries to healthcare personnel from aggressive or contaminated patients</div>
+            <div class="hypothesis-item"><strong>3.</strong> Reduced hospital-acquired infections via isolation and standardized disinfection</div>
+            <div class="hypothesis-item"><strong>4.</strong> Increased emergency department capacity through procedure redistribution</div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Conclusion</h2>
+          <p>Creating an AMM is a technically achievable medium-term goal. The concept integrates existing robotic and diagnostic technologies into a new admission model — available 24/7, standardizing care and reducing human factors like fear of contaminated patients. Healthcare personnel stay physically separated from aggressive or infectious patients. Engineering, ethical, and legal challenges remain, but AMM represents a realistic path to more humane and effective care for society's most vulnerable.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Full project documentation</h2>
+          <p>The complete ~20-page specification with all chapters, diagrams, references, and presentation text:</p>
+          <p><a href="docs/AMM_Full_Specification_EN.docx" class="btn btn-primary btn-spec" download>Download full specification (DOCX)</a></p>
+        </div>
+
+        <div class="content-block">
+          <h2>References</h2>
+          <ol class="refs">
+            <li><a href="https://www.mos.ru/news/item/119339073/" target="_blank" rel="noopener">Robotic Systems in Medicine — mos.ru</a></li>
+            <li><a href="https://www.sobyanin.ru/razvitie-robotizatsii-v-meditsine" target="_blank" rel="noopener">Robots at Sklifosovsky Research Institute — sobyanin.ru</a></li>
+            <li><a href="https://www.prescouter.com/2022/07/ingestible-sensors-the-future-of-digital-pills-in-healthcare/" target="_blank" rel="noopener">Smart Pills and Ingestible Sensors — PreScouter</a></li>
+            <li><a href="https://iotbusinessnews.com/2022/01/27/82046-ingestible-sensors-market-to-reach-8-9-billion-globally-by-2030/" target="_blank" rel="noopener">Ingestible Sensors Market — IoT Business News</a></li>
+            <li><a href="https://robogeek.ru/roboty-dlya-uhoda-za-lezhachimi-bolnymi" target="_blank" rel="noopener">Caregiving Robots (ROBEAR) — RoboGeek</a></li>
+            <li><a href="https://charityhospital.ru/10-faktov-o-medpomoshchi-bezdomnym/" target="_blank" rel="noopener">Healthcare for Homeless People — Charity Hospital</a></li>
+            <li><a href="https://sbermed.ai/news/telemeditsina-chto-eto-takoe-i-kak-rabotaet" target="_blank" rel="noopener">Telemedicine and Its Applications — SberMed AI</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section class="simulator-cta">
+      <div class="container">
+        <span class="eyebrow">Interactive demo</span>
+        <h2>Launch the AMM Simulator</h2>
+        <p>Experience the monitoring system as a live simulation. Watch vitals, automatic detection, and the data pipeline update in real time. Every value is simulated — this is not a medical device.</p>
+        <a href="http://127.0.0.1:5001/" data-simulator class="btn btn-primary btn-sim" target="_blank" rel="noopener noreferrer">Launch Simulator</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <img src="assets/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span>Automated Medical Module</span>
+      </div>
+      <div class="footer-meta">
+        <strong>Vera Kochergina</strong> — <a href="https://www.lfmoscou.com/" target="_blank" rel="noopener">Lycée Français de Moscou</a>, 2026
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMM Digital System — Simulation Dashboard</title>
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body data-lang="{{ lang }}">
+  <div class="disclaimer-banner" role="alert">
+    <strong>{{ strings.disclaimer_banner }}</strong>
+    <span>{{ strings.disclaimer_note }}</span>
+  </div>
+
+  <div class="alert-banner" id="alert-banner" role="alert">
+    <span class="alert-status" id="alert-status">—</span>
+    <span class="alert-message" id="alert-message"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="4" y="4" width="40" height="40" rx="10" fill="#4a9eed"/>
+          <path d="M14 25h6l3-8 5 16 3-8h6" fill="none" stroke="#fff" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-title">Automated Medical Module</span>
+          <span class="brand-tagline">{{ strings.brand_tagline }}</span>
+        </span>
+      </div>
+        <div class="header-meta">
+          <span class="sim-pill"><span class="live-dot live-dot--sm" aria-hidden="true"></span>{{ strings.sim_pill }}</span>
+        </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="overview">
+      <div class="overview-left">
+        <h1>{{ strings.overview_title }}</h1>
+        <p class="overview-lead">{{ strings.overview_lead }}</p>
+      </div>
+      <div class="overview-right">
+        <div class="monitor-pill" id="monitor-pill">
+          <span class="live-dot" id="live-dot" aria-hidden="true"></span>
+          <span id="monitor-state">{{ strings.live_monitoring }}</span>
+        </div>
+        <div class="status-card" id="overall-status-card">
+          <span class="status-label">{{ strings.assessment_label }}</span>
+          <span class="status-value" id="overall-status">—</span>
+        </div>
+        <div class="timestamp-card">
+          <span class="status-label">{{ strings.last_reading_label }}</span>
+          <span class="timestamp-value" id="reading-timestamp">—</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="vitals-grid" aria-label="Simulated vitals">
+      <article class="vital-card" id="card-temperature_c">
+        <span class="vital-label">{{ strings.vitals.temperature_c }}</span>
+        <span class="vital-value" id="value-temperature_c">—</span>
+        <span class="vital-unit">°C</span>
+        <span class="vital-status" id="status-temperature_c">—</span>
+      </article>
+      <article class="vital-card" id="card-heart_rate_bpm">
+        <span class="vital-label">{{ strings.vitals.heart_rate_bpm }}</span>
+        <span class="vital-value" id="value-heart_rate_bpm">—</span>
+        <span class="vital-unit">bpm</span>
+        <span class="vital-status" id="status-heart_rate_bpm">—</span>
+      </article>
+      <article class="vital-card" id="card-spo2_percent">
+        <span class="vital-label">{{ strings.vitals.spo2_percent }}</span>
+        <span class="vital-value" id="value-spo2_percent">—</span>
+        <span class="vital-unit">%</span>
+        <span class="vital-status" id="status-spo2_percent">—</span>
+      </article>
+      <article class="vital-card" id="card-respiratory_rate_bpm">
+        <span class="vital-label">{{ strings.vitals.respiratory_rate_bpm }}</span>
+        <span class="vital-value" id="value-respiratory_rate_bpm">—</span>
+        <span class="vital-unit">breaths/min</span>
+        <span class="vital-status" id="status-respiratory_rate_bpm">—</span>
+      </article>
+    </section>
+
+    <section class="controls">
+      <button type="button" class="btn btn-primary" id="run-button">{{ strings.run_simulation }}</button>
+      <button type="button" class="btn btn-secondary" id="auto-button" aria-pressed="false">{{ strings.auto_off }}</button>
+      <button type="button" class="btn btn-secondary" id="demo-toggle" aria-expanded="false">{{ strings.demo_mode }}</button>
+    </section>
+
+    <div class="demo-panel" id="demo-panel" hidden>
+      <p class="panel-note">{{ strings.demo_mode_note }}</p>
+      <div class="demo-scenarios">
+        {% for key in strings.scenarios %}<button type="button" class="btn btn-demo" data-scenario="{{ key }}">{{ strings.scenarios[key] }}</button>
+        {% endfor %}
+      </div>
+      <button type="button" class="btn btn-secondary" id="demo-exit">{{ strings.demo_exit }}</button>
+    </div>
+
+    <section class="controls export-controls">
+      <span class="export-label">{{ strings.export_label }}</span>
+      <button type="button" class="btn btn-secondary" id="export-json">{{ strings.export_json }}</button>
+      <button type="button" class="btn btn-secondary" id="export-csv">{{ strings.export_csv }}</button>
+    </section>
+
+    <section class="panel pipeline-panel">
+      <h2 class="panel-title">{{ strings.pipeline_title }}</h2>
+      <p class="panel-note">{{ strings.pipeline_note }}</p>
+       <ol class="pipeline" id="pipeline">
+         <li class="pipeline-stage" id="stage-sensors"><span class="stage-name">{{ strings.stage_sensors }}</span><span class="stage-sub">{{ strings.stage_sub_sensors }}</span><span class="stage-detail" id="detail-sensors"></span></li>
+         <li class="pipeline-arrow" aria-hidden="true">→</li>
+         <li class="pipeline-stage" id="stage-processing"><span class="stage-name">{{ strings.stage_processing }}</span><span class="stage-sub">{{ strings.stage_sub_processing }}</span><span class="stage-detail" id="detail-processing"></span></li>
+         <li class="pipeline-arrow" aria-hidden="true">→</li>
+         <li class="pipeline-stage" id="stage-api"><span class="stage-name">{{ strings.stage_api }}</span><span class="stage-sub">{{ strings.stage_sub_api }}</span><span class="stage-detail" id="detail-api"></span></li>
+         <li class="pipeline-arrow" aria-hidden="true">→</li>
+         <li class="pipeline-stage" id="stage-dashboard"><span class="stage-name">{{ strings.stage_dashboard }}</span><span class="stage-sub">{{ strings.stage_sub_dashboard }}</span><span class="stage-detail" id="detail-dashboard"></span></li>
+       </ol>
+
+    </section>
+
+    <section class="panels">
+      <div class="panel">
+        <h2 class="panel-title">{{ strings.chart_temp }}</h2>
+        <div class="chart-wrap">
+          <canvas id="temp-chart"></canvas>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title">{{ strings.chart_heart }}</h2>
+        <div class="chart-wrap">
+          <canvas id="heart-chart"></canvas>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title">{{ strings.chart_spo2 }}</h2>
+        <div class="chart-wrap">
+          <canvas id="spo2-chart"></canvas>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 class="panel-title">{{ strings.chart_resp }}</h2>
+        <div class="chart-wrap">
+          <canvas id="resp-chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel sensors-panel">
+      <h2 class="panel-title">{{ strings.components_title }}</h2>
+      <p class="panel-note">{{ strings.components_note }}</p>
+      <ul class="components-list" id="components-list"></ul>
+    </section>
+
+    <section class="panel events-panel">
+      <h2 class="panel-title">{{ strings.events_title }}</h2>
+      <p class="panel-note">{{ strings.events_note }}</p>
+      <ul class="events-list" id="events-list"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>{{ strings.footer_main }}</span>
+      <span class="footer-note">{{ strings.footer_note }}</span>
+    </div>
+  </footer>
+
+  <script>window.AMM_I18N = {{ strings | tojson }};</script>
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

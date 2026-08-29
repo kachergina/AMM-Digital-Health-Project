@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation complète du Module Médical Automatisé — architecture, protocole Delta, modèles de déploiement.">
+  <title>À propos — MMA</title>
+  <link rel="icon" href="../assets/images/favicon-32x32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="../assets/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span class="logo-text">
+          <span class="logo-title">Module Médical Automatisé</span>
+          <span class="logo-tagline">Projet de recherche</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="about.html" class="active">À propos</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">
+          <a href="#" data-lang="en">EN</a>
+          <a href="#" data-lang="fr">FR</a>
+          <a href="#" data-lang="ru" class="lang-hidden">RU</a>
+        </div>
+        <a href="#" class="btn btn-primary btn-spec" data-spec-download>
+          <span class="long-label">Spécification complète</span><span class="short-label">Spec</span>
+        </a>
+        <a href="http://127.0.0.1:5001/" data-simulator class="btn btn-primary btn-sim" target="_blank" rel="noopener noreferrer">
+          <span class="sim-long">Lancer le simulateur</span><span class="sim-short">Simulateur</span>
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>À propos du projet</h1>
+        <p>Projet de recherche de Vera Kochergina, <a href="https://www.lfmoscou.com/" target="_blank" rel="noopener">Lycée Français de Moscou</a> (2026). Développement du concept d'un Module Médical Automatisé (MMA) pour la prise en charge d'urgence des patients issus de groupes sociaux vulnérables.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="content-block">
+          <span class="chapter-tag">Introduction</span>
+          <h2>Pertinence et objectifs</h2>
+          <p>Les systèmes de santé font face chaque jour à des personnes marginalisées : sans-abri, patients en état d'intoxication alcoolique ou médicamenteuse, personnes sans pièces d'identité et personnes en situation d'hygiène précaire. L'admission crée des risques infectieux pour les autres patients, de l'agressivité envers le personnel et des retards diagnostiques faute de dossiers médicaux et de maladies chroniques non traitées.</p>
+          <p>Les hôpitaux modernes manquent souvent d'infrastructure pour isoler ces patients en toute sécurité, les évaluer rapidement et assurer un traitement sanitaire. Le concept MMA propose un sas isolé pour l'évaluation initiale, les soins sanitaires et la stabilisation de base — toujours sous la supervision d'un médecin.</p>
+          <h3>Axes de recherche</h3>
+          <ul>
+            <li><strong>Objet :</strong> les soins d'urgence pour les patients socialement vulnérables à l'admission hospitalière</li>
+            <li><strong>Sujet :</strong> concept organisationnel et technologique d'un module isolé sécurisé</li>
+            <li><strong>Objectif :</strong> réduire les risques et accélérer la prise en charge initiale tout en préservant le rôle central du médecin</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <span class="chapter-tag">Chapitre 1</span>
+          <h2>Fondements théoriques et analyse du problème</h2>
+          <h3>1.1 Obstacles et risques</h3>
+          <p>Les données caritatives suggèrent des dizaines de milliers de sans-abri en Russie — seule la partie visible du problème. Principales raisons de recours aux soins : blessures, gelures, intoxications et aggravation de maladies chroniques non traitées depuis des années.</p>
+          <div class="barrier-grid">
+            <article class="barrier-card">
+              <h3>Obstacle épidémiologique</h3>
+              <p>Les patients de rue peuvent être porteurs de tuberculose, hépatite, VIH, maladies cutanées et parasitaires. Les placer dans des salles communes avec des patients immunodéprimés postopératoires crée un risque d'infection nosocomiale. Les médecins font face à un dilemme : aider un patient sans mettre les autres en danger.</p>
+            </article>
+            <article class="barrier-card">
+              <h3>Obstacle comportemental</h3>
+              <p>L'intoxication entraîne souvent une agressivité incontrôlée. Les agressions contre médecins et infirmières sont régulièrement signalées. Le personnel — surtout les femmes — est souvent physiquement non protégé, ce qui mène à l'épuisement professionnel et à la peur.</p>
+            </article>
+            <article class="barrier-card">
+              <h3>Obstacle social et hygiénique</h3>
+              <p>L'absence de pièces d'identité empêche d'établir rapidement l'identité. Une contamination sévère de la peau et des vêtements bloque l'examen, les injections et la pose de cathéter veineux.</p>
+            </article>
+          </div>
+          <p>Les équipes mobiles (par ex. le projet Night Bus à Saint-Pétersbourg) apportent des soins préhospitaliers vitaux, mais l'admission hospitalière sûre et efficace reste un problème non résolu.</p>
+
+          <h3>1.2 Automatisation médicale existante</h3>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Système chirurgical da Vinci</h3>
+              <p>Instrument robotisé contrôlé par le chirurgien, avec une précision exceptionnelle, élimination des tremblements et accès mini-invasif — preuve que les manipulateurs peuvent réaliser des procédures médicales délicates.</p>
+            </article>
+            <article class="card">
+              <h3>Robots de service hospitalier</h3>
+              <p>Chariots automatisés dans des établissements comme l'Institut Sklifosovsky de Moscou transportent échantillons, médicaments et linge — libérant les infirmières pour les soins aux patients.</p>
+            </article>
+            <article class="card">
+              <h3>Robots de désinfection UV</h3>
+              <p>Usage généralisé post-COVID : après le départ du personnel, les robots éliminent les agents pathogènes de surface en quelques minutes — stérilité au-delà du nettoyage manuel.</p>
+            </article>
+          </div>
+
+          <h3>1.3 Concepts de diagnostic et de soins</h3>
+          <p><strong>Pilules intelligentes</strong> — capsules ingestibles avec caméras miniatures capturant des milliers d'images intestinales, transmettant les données sans endoscopie invasive. <strong>ROBEAR</strong> (Japon) — robot d'aide aux soins qui soulève doucement les patients alités vers un fauteuil roulant, réduisant la charge physique des infirmières.</p>
+          <p><strong>Conclusion du chapitre 1 :</strong> la voie réaliste n'est pas d'inventer une nouvelle technologie, mais d'intégrer des solutions éprouvées — manipulateurs robotisés, robots de service, désinfection UV, diagnostic rapide — dans un modèle d'admission sécurisé.</p>
+        </div>
+
+        <div class="content-block">
+          <span class="chapter-tag">Chapitre 2</span>
+          <h2>Concept et architecture du MMA</h2>
+          <div class="two-col">
+            <div>
+              <h3>2.1 Objectif : une « salle propre » à l'entrée</h3>
+              <p>Le MMA est un sas high-tech entre le monde extérieur dangereux et l'intérieur stérile de l'hôpital. Unité de taille conteneur à côté des urgences, reliée par un couloir hermétique. Murs résistants aux chocs, faciles à désinfecter, sans éléments amovibles ou cassables à l'intérieur.</p>
+              <p>Au centre : un lit médical multifonction. Sur rails au plafond : un manipulateur robotisé universel et un scanner diagnostique (caméras, thermographie, capteurs sans contact). Le drainage au sol permet le nettoyage automatique.</p>
+              <h3>2.2 Justification technologique</h3>
+              <ul>
+                <li><strong>Manipulateur</strong> — inspiré de da Vinci, mais polyvalent : cathéter, désinfection, prélèvement sanguin via accessoires interchangeables</li>
+                <li><strong>Lit-plateforme</strong> — inspiré de ROBEAR : positionnement automatique, retournement, prévention des escarres</li>
+                <li><strong>Stérilisation</strong> — technologie de robot UV mobile intégrée pour un cycle complet entre les patients</li>
+              </ul>
+            </div>
+            <img class="content-image" src="../assets/images/interior.jpg" alt="Schéma de l'architecture intérieure du MMA">
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>2.3 Algorithme de fonctionnement (6 étapes)</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h3>Admission et isolement</h3>
+                <p>L'équipe d'ambulance s'authentifie par carte électronique. Le patient est transféré sur le lit-plateforme. La porte extérieure se ferme hermétiquement et se verrouille. Le MMA passe en mode autonome.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h3>Évaluation sans contact (15–20 sec)</h3>
+                <p>Caméra thermique, modèle 3D du corps (fractures, blessures), analyse acoustique de la respiration et de la parole. Classification : coopératif, inconscient ou agressif — déclenche le protocole Delta si nécessaire.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h3>Examen avec contact</h3>
+                <p>Le bras robotisé désinfecte la peau, localise la veine par infrarouge, pose le cathéter IV, prélève le sang pour lab-on-a-chip, démarre la perfusion saline, fixe oxymètre et brassard tensionnel.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <h3>Décision du médecin (5–7 min)</h3>
+                <p>Le poste de contrôle reçoit le modèle 3D, le scan thermique, les constantes vitales et les résultats sanguins. Le médecin communique par audio et décide des prochaines étapes.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div>
+                <h3>Stabilisation et procédures</h3>
+                <p>Toutes les actions requièrent la confirmation du médecin — par ex. glucose en cas d'hypoglycémie, contention souple si l'agressivité revient, douche robotisée et séchage à air chaud pour le traitement sanitaire.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">6</div>
+              <div>
+                <h3>Transfert et stérilisation</h3>
+                <p>Le couloir hermétique s'ouvre. Après le départ du patient, les deux portes se verrouillent. Pulvérisation antiseptique + UV haute intensité. Prêt pour le patient suivant en ~15 minutes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block" id="delta">
+          <h3>2.3.1 Protocole Delta — patients agressifs</h3>
+          <p>Activé en cas d'agression verbale ou physique, ou d'agitation psychomotrice sans réponse aux consignes. Objectif : préparation sûre et humaine au diagnostic.</p>
+          <h3>Étape 1 — Intervention verbale</h3>
+          <p>Le médecin via haut-parleurs : <em>« Bonjour. Vous êtes dans une unité médicale. Nous sommes là pour vous aider. Veuillez rester calme et immobile. »</em> Le système attend 1 à 2 minutes.</p>
+          <h3>Étape 2 — Contention mécanique</h3>
+          <p>Des coussins rembourrés se lèvent sur les côtés du lit — limitent les mouvements sans douleur ni atteinte à la circulation. But : empêcher les mouvements dangereux, pas infliger de douleur.</p>
+          <h3>Étape 3 — Sédation par inhalation</h3>
+          <p>Sévoflurane ou équivalent contrôlé avec oxygène élevé. Le patient s'endort naturellement. Surveillance continue de la SpO2 et de la respiration. Le médecin peut interrompre à tout moment.</p>
+          <h3>Étape 4 — Retour au protocole standard</h3>
+          <p>Le bras robotisé effectue cathéter, prélèvement sanguin et procédures sous supervision complète.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2.4 Composants clés</h3>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Manipulateur robotisé</h3>
+              <p>Flexible, précis, outils interchangeables : pince, aiguille à cathéter, tampon désinfectant.</p>
+            </article>
+            <article class="card">
+              <h3>Scanner diagnostique</h3>
+              <p>Thermographie et scan volumétrique — fractures, saignements, anomalies.</p>
+            </article>
+            <article class="card">
+              <h3>Laboratoire rapide</h3>
+              <p>Analyseur sanguin compact — minutes au lieu d'une heure en laboratoire conventionnel.</p>
+            </article>
+            <article class="card">
+              <h3>« Cerveau » du système</h3>
+              <p>Ordinateur haute performance agrégeant toutes les données capteurs, présentant des tableaux de bord clairs, exécutant les commandes du médecin.</p>
+            </article>
+            <article class="card">
+              <h3>Poste de contrôle</h3>
+              <p>Le médecin travaille depuis une salle sécurisée : vidéo multi-angles, constantes avec anomalies mises en évidence, commandes vocales et tactiles.</p>
+            </article>
+            <article class="card">
+              <h3>Infrastructure de sécurité</h3>
+              <p>LiDAR, ventilation HEPA, lampes UV-C, sas à double porte, drainage au sol, écran distant pour le médecin.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <span class="chapter-tag">Chapitre 3</span>
+          <h2>Mise en œuvre dans le système de santé</h2>
+          <h3>3.1 Modèles de déploiement</h3>
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Extension externe</h3>
+              <p>Unité préfabriquée sur fondation à côté des urgences avec couloir hermétique.</p>
+              <p class="card-note pros"><strong>Avantages :</strong> déploiement rapide (semaines), pas de reconstruction majeure, économique.</p>
+              <p class="card-note cons"><strong>Inconvénients :</strong> nécessite de l'espace sur le terrain hospitalier, peut affecter l'apparence.</p>
+            </article>
+            <article class="card">
+              <h3>Intégration architecturale</h3>
+              <p>Plusieurs MMA intégrés dans un nouvel hôpital ou une reconstruction complète des urgences.</p>
+              <p class="card-note pros"><strong>Avantages :</strong> logistique parfaite, intégration esthétique.</p>
+              <p class="card-note cons"><strong>Inconvénients :</strong> coût élevé, délais longs, nouveaux bâtiments uniquement.</p>
+            </article>
+            <article class="card">
+              <h3>MMA mobile</h3>
+              <p>Module sur châssis de camion pour catastrophes, victimes de masse, zones isolées.</p>
+              <p class="card-note pros"><strong>Avantages :</strong> grande flexibilité et mobilité.</p>
+              <p class="card-note cons"><strong>Inconvénients :</strong> autonomie complète requise, coûts d'exploitation plus élevés.</p>
+            </article>
+          </div>
+
+          <h3>3.2 Impact économique et social</h3>
+          <p><strong>Bénéfices directs :</strong> coûts réduits de traitement des infections nosocomiales ; charge allégée pour infirmières, personnel de support et sécurité. <strong>Bénéfices indirects :</strong> moins d'épuisement professionnel ; meilleur débit aux urgences. <strong>Impact social :</strong> soins dignes garantis aux personnes souvent exclues du système de santé.</p>
+
+          <h3>3.3 Nouveaux rôles professionnels</h3>
+          <ul>
+            <li><strong>Médecin-opérateur MMA</strong> — spécialiste des urgences ou de réanimation formé à l'interface du module</li>
+            <li><strong>Ingénieur de maintenance MMA</strong> — entretien, calibration, réparation des modules et systèmes de stérilisation</li>
+          </ul>
+
+          <h3>3.4 Aspects éthiques et juridiques</h3>
+          <p>Soins d'urgence sans consentement préalable lorsque la vie est en danger immédiat. La responsabilité reste toujours celle du médecin — le robot est un outil. La réduction du contact direct augmente les chances de soins rapides, sûrs et dignes.</p>
+
+          <h3>3.5 Limites, risques et atténuation</h3>
+          <p>Le MMA ne remplace pas le scanner/IRM/échographie, le diagnostic final ni la réanimation complète lorsque les protocoles d'urgence standard s'appliquent.</p>
+          <p><strong>Risques clés :</strong> panne de capteur ou de manipulateur ; données incomplètes sans supervision médicale ; échec du cycle de désinfection ; automutilation ou dommages à l'équipement ; lacunes juridiques et réglementaires.</p>
+          <p><strong>Atténuation :</strong> supervision médicale obligatoire et documentation complète ; modes de défaillance sûre (prise de contrôle manuelle, appel du personnel, désactivation des fonctions dangereuses) ; maintenance régulière et vérification de stérilisation ; formation complète et système d'autorisation.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Hypothèse</h2>
+          <div class="hypothesis-list">
+            <div class="hypothesis-item"><strong>1.</strong> Évaluation initiale plus rapide (constantes et données primaires) qu'à l'admission standard</div>
+            <div class="hypothesis-item"><strong>2.</strong> Moins de blessures du personnel soignant causées par des patients agressifs ou contaminés</div>
+            <div class="hypothesis-item"><strong>3.</strong> Réduction des infections nosocomiales grâce à l'isolement et à la désinfection standardisée</div>
+            <div class="hypothesis-item"><strong>4.</strong> Capacité accrue des urgences par redistribution des procédures</div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Conclusion</h2>
+          <p>Créer un MMA est un objectif techniquement réalisable à moyen terme. Le concept intègre des technologies robotiques et diagnostiques existantes dans un nouveau modèle d'admission — disponible 24 h/24, standardisant les soins et réduisant les facteurs humains comme la peur des patients contaminés. Le personnel soignant reste physiquement séparé des patients agressifs ou infectieux. Des défis d'ingénierie, éthiques et juridiques subsistent, mais le MMA représente une voie réaliste vers des soins plus humains et efficaces pour les plus vulnérables de la société.</p>
+        </div>
+
+        <div class="content-block">
+          <h2>Documentation complète du projet</h2>
+          <p>La spécification intégrale (~20 pages) avec tous les chapitres, schémas, références et texte de présentation :</p>
+          <p><a href="../docs/AMM_Full_Specification_FR.docx" class="btn btn-primary btn-spec" download>Télécharger la spécification complète (DOCX)</a></p>
+        </div>
+
+        <div class="content-block">
+          <h2>Références</h2>
+          <ol class="refs">
+            <li><a href="https://www.mos.ru/news/item/119339073/" target="_blank" rel="noopener">Systèmes robotiques en médecine — mos.ru</a></li>
+            <li><a href="https://www.sobyanin.ru/razvitie-robotizatsii-v-meditsine" target="_blank" rel="noopener">Robots à l'Institut Sklifosovsky — sobyanin.ru</a></li>
+            <li><a href="https://www.prescouter.com/2022/07/ingestible-sensors-the-future-of-digital-pills-in-healthcare/" target="_blank" rel="noopener">Pilules intelligentes et capteurs ingestibles — PreScouter</a></li>
+            <li><a href="https://iotbusinessnews.com/2022/01/27/82046-ingestible-sensors-market-to-reach-8-9-billion-globally-by-2030/" target="_blank" rel="noopener">Marché des capteurs ingestibles — IoT Business News</a></li>
+            <li><a href="https://robogeek.ru/roboty-dlya-uhoda-za-lezhachimi-bolnymi" target="_blank" rel="noopener">Robots d'aide aux soins (ROBEAR) — RoboGeek</a></li>
+            <li><a href="https://charityhospital.ru/10-faktov-o-medpomoshchi-bezdomnym/" target="_blank" rel="noopener">Soins aux sans-abri — Charity Hospital</a></li>
+            <li><a href="https://sbermed.ai/news/telemeditsina-chto-eto-takoe-i-kak-rabotaet" target="_blank" rel="noopener">Télémédecine et ses applications — SberMed AI</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section class="simulator-cta">
+      <div class="container">
+        <span class="eyebrow">Démo interactive</span>
+        <h2>Lancer le simulateur AMM</h2>
+        <p>Découvrez le système de monitoring sous forme de simulation en direct. Suivez les constantes vitales, la détection automatique et le circuit de données en temps réel. Toutes les données sont simulées — ce n'est pas un dispositif médical.</p>
+        <a href="http://127.0.0.1:5001/" data-simulator class="btn btn-primary btn-sim" target="_blank" rel="noopener noreferrer">Lancer le simulateur</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <img src="../assets/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span>Module Médical Automatisé</span>
+      </div>
+      <div class="footer-meta">
+        <strong>Vera Kochergina</strong> — <a href="https://www.lfmoscou.com/" target="_blank" rel="noopener">Lycée Français de Moscou</a>, 2026
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
