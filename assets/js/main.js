@@ -6,7 +6,7 @@
 
   // Single source of truth for the public "Launch Simulator" CTA.
   // Replace this with the production simulator URL when deploying.
-  var SIMULATOR_URL = "http://127.0.0.1:5001/";
+  var SIMULATOR_URL = "https://amm-digital-health-project.onrender.com";
 
   function getLangPrefix() {
     var path = window.location.pathname;
