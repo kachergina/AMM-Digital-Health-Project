@@ -2,7 +2,7 @@
 
 School project website: concept of an Automated Medical Module for emergency care of socially vulnerable patients.
 
-**Author:** Vera Kochergina, Moscow 2026
+**Author:** Vera Kochergina
 
 ## Live site
 

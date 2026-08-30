@@ -337,6 +337,82 @@ a {
   margin-right: auto;
 }
 
+.hero-intro,
+.hero-topic,
+.hero-problem {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hero-topic,
+.hero-problem {
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.hero-topic h2,
+.hero-problem h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hero-problem h3 {
+  margin: 24px auto 8px;
+  max-width: 760px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.hero-topic p,
+.hero-problem > p {
+  margin: 0 auto 16px;
+  max-width: 760px;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+.hero-topic .chapter-tag,
+.hero-problem .chapter-tag {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.hero-problem .barrier-grid {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.hero-hypothesis {
+  max-width: 820px;
+  margin: 48px auto 0;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.hero-hypothesis .hypothesis-list {
+  text-align: left;
+}
+
+.hero .hero-actions {
+  margin-top: 40px;
+}
+
+.hero-project-title {
+  margin: 0 0 16px;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
 .eyebrow {
   display: inline-block;
   margin-bottom: 16px;
@@ -376,6 +452,7 @@ a {
   position: relative;
   width: 100%;
   max-width: 720px;
+  margin: 48px auto 0;
 }
 
 .hero-visual img {

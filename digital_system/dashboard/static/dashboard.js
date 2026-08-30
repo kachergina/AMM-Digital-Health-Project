@@ -183,8 +183,6 @@ no external dependencies and works fully offline.
 
     el("reading-timestamp").textContent = shortTime(reading.timestamp);
 
-    setMonitorState();
-
     var overall = analysis.overall_status;
     var overallNode = el("overall-status");
     overallNode.textContent = analysis.overall_status_label || overall;
@@ -209,7 +207,6 @@ no external dependencies and works fully offline.
 
     sessionHistory.push({ reading: reading, analysis: analysis });
     if (sessionHistory.length > MAX_HISTORY) sessionHistory.shift();
-    updateAlert(analysis);
     addEvent(data);
     updatePipelineDetails(data);
 
@@ -259,19 +256,6 @@ no external dependencies and works fully offline.
     }
     var dash = el("detail-dashboard");
     if (dash) dash.textContent = i18n.detail_dashboard || "rendered";
-  }
-
-  function updateAlert(analysis) {
-    var banner = el("alert-banner");
-    var statusNode = el("alert-status");
-    var msgNode = el("alert-message");
-    if (!banner) return;
-    var status = analysis.overall_status;
-    var i18n = window.AMM_I18N || {};
-    statusNode.textContent = analysis.overall_status_label || status;
-    msgNode.textContent = i18n["alert_" + status.toLowerCase()] || "";
-    banner.className = "alert-banner";
-    if (statusClass[status]) banner.classList.add(statusClass[status]);
   }
 
   function renderComponents(components) {
@@ -365,21 +349,6 @@ no external dependencies and works fully offline.
     el("demo-toggle").setAttribute("aria-expanded", String(!panel.hidden));
   }
 
-  function setMonitorState() {
-    var pill = el("monitor-pill");
-    var state = el("monitor-state");
-    var i18n = window.AMM_I18N || {};
-    if (!state) return;
-    if (demoScenario) {
-      var label = (i18n.scenarios && i18n.scenarios[demoScenario]) || demoScenario;
-      state.textContent = (i18n.demo_mode || "Demo Mode") + " · " + label;
-      if (pill) pill.classList.add("is-demo");
-    } else {
-      state.textContent = i18n.live_monitoring || "Live monitoring (simulated)";
-      if (pill) pill.classList.remove("is-demo");
-    }
-  }
-
   function selectDemo(scenario) {
     demoScenario = scenario;
     var panel = el("demo-panel");
@@ -389,7 +358,6 @@ no external dependencies and works fully offline.
     Array.prototype.forEach.call(document.querySelectorAll(".btn-demo"), function (b) {
       b.classList.toggle("active", b.getAttribute("data-scenario") === scenario);
     });
-    setMonitorState();
     runSimulation();
   }
 

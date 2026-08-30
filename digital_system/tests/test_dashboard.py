@@ -129,13 +129,6 @@ def test_dashboard_demo_mode_localized_ru(client):
     assert ">Критический<" in body
 
 
-def test_dashboard_has_alert_banner(client):
-    body = client.get("/").get_data(as_text=True)
-    assert 'id="alert-banner"' in body
-    assert 'id="alert-status"' in body
-    assert 'id="alert-message"' in body
-
-
 def test_dashboard_has_export_buttons(client):
     body = client.get("/").get_data(as_text=True)
     assert 'id="export-json"' in body
@@ -172,19 +165,3 @@ def test_dashboard_has_pipeline_detail_spans(client):
     for detail_id in ("detail-sensors", "detail-processing", "detail-api", "detail-dashboard"):
         assert 'id="%s"' % detail_id in body
 
-
-def test_dashboard_has_monitor_indicator(client):
-    body = client.get("/").get_data(as_text=True)
-    assert 'id="monitor-pill"' in body
-    assert 'id="monitor-state"' in body
-    assert "Live monitoring (simulated)" in body
-
-
-def test_dashboard_monitor_indicator_localized_fr(client):
-    body = client.get("/?lang=fr").get_data(as_text=True)
-    assert "Surveillance live (simulée)" in body
-
-
-def test_dashboard_monitor_indicator_localized_ru(client):
-    body = client.get("/?lang=ru").get_data(as_text=True)
-    assert "Живая мониторинг (симуляция)" in body
